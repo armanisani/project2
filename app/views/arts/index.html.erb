@@ -1,2 +1,14 @@
-<h1>Arts#index</h1>
-<p>Find me in app/views/arts/index.html.erb</p>
+<h1 style="background: rgba(71, 71, 71, 0.59); color: white;margin-top: 0;">arts</h1>
+<% if logged_in? %>
+<p style="text-align: center;"class="lead"><a class="btn btn-success btn-lg" href="/arts/new" role="button">post art</a></p>
+<% end %>
+<% @arts.each do |u| %>
+<div style="background: white;text-align: center; border: 2px solid black;display: inline-block; margin: 0 3%; width: 304px;">
+<h2><%= u.name %></h2>
+<h5> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%" %><%= link_to u.user.username, show_user_path(u.user) %></h5>
+<p><%= image_tag u.avatar.url(:medium) %></p>
+<p>Style:<%= u.style %></p>
+<p>Cost:$<%= u.price %></p>
+<p>Details:<%= u.details %></p>
+</div>
+<% end %>

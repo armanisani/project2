@@ -1,11 +1,11 @@
-<h1>post art</h1>
-
-<%= form_for @art, url: create_user_path, html: { multipart: true} do |f| %>
+<h1 style="background: rgb(255, 236, 110); opacity: 0.8">post art</h1>
+<div style="width: 40%; margin: 0 auto;"class="">
+  <%= form_for @art, url: create_art_path, html: { multipart: true} do |f| %>
   <%= f.text_field :name, class:"form-control", placeholder:"Name of artwork"%>
   <br>
   <%= f.text_field :style, class:"form-control", placeholder:"Style of artwork" %>
   <br>
-  <%= f.number_field :price, class:"form-control", type:"email", placeholder:"Price of artwork"%>
+  <%= f.number_field :price, class:"form-control", placeholder:"Price of artwork"%>
   <br>
   <%= f.text_field :details, class:"form-control", placeholder:"Details of artwork" %>
   <br>
@@ -14,3 +14,4 @@
   <br>
   <%= f.submit class:'btn btn-default' %>
 <% end %>
+</div>

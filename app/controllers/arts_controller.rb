@@ -1,4 +1,5 @@
 class ArtsController < ApplicationController
+  before_action :authorize, only: [:new]
 
   def index
     @arts = Art.all
@@ -23,9 +24,9 @@ class ArtsController < ApplicationController
   end
 
   def create
-    @art = current_user.art.new(art_params)
+    @art = current_user.arts.new(art_params)
     if @art.save
-      redirect_to art_path
+      redirect_to art_index_path
     end
   end
 

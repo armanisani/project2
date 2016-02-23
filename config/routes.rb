@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #arts
   get 'arts' => 'arts#index', as: :art_index
   get "arts/new" => "arts#new"
-  post "arts" => "arts#create"
+  post "arts" => "arts#create", as: :create_art
   patch "arts/:id" => "arts#update"
   get "arts/:id/edit" => "arts#edit"
   get "arts/:id" => "arts#show"
