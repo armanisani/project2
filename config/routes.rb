@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/show' => 'homes#show'
 
   #users routes
-  get 'users' => 'users#index'
+  get 'users' => 'users#index', as: :users
   get 'users/new' => 'users#new', as: :new_user
   post 'users' => 'users#create', as: :create_user
   delete 'users/:id' => 'users#delete'
   patch 'users/:id' => 'users#update'
-  get 'users/:id' => 'users#show'
+  get 'users/:id' => 'users#show', as: :show_user
   get 'users/:id/edit' => 'users#edit'
   # resources :users
   #arts
