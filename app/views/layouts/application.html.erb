@@ -19,9 +19,15 @@
   <%= link_to "Users", users_path %>
 </span>
 <span style="text-align: right;margin: 0 10px 0 10px"class="">
+  <%= link_to "Artwork", art_index_path %>
+</span>
+<span style="text-align: right;margin: 0 10px 0 10px"class="">
   <% if logged_in? %>
   <%= link_to "Profile", show_user_path(current_user)%>
   <% end %>
+</span>
+<span style="text-align: right;margin: 0 10px 0 10px"class="">
+  <%= link_to "cart(coming soon)"%>
 </span>
 <span style="text-align: right;margin: 0 10px 0 10px"class="">
 <% if logged_in? %>
