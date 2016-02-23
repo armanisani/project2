@@ -1,20 +1,20 @@
 <h1>signup to cart</h1>
 
-<%= form_for @user, url: root_path, html: { multipart: true} do |f| %>
-  <%= f.label :username, "Username" %>
-  <%= f.text_field :username %>
-<br>
-  <%= f.label :first, "First Name" %>
-  <%= f.text_field :first %>
-<br>
-  <%= f.label :last, "Last Name" %>
-  <%= f.text_field :last %>
-<br>
-  <%= f.label :age, "Age" %>
-  <%= f.number_field :age %>
-<br>
-  <%= f.label :avatar, 'Profile Photo' %>
-  <%= f.file_field :avatar %>
-<br>
-  <%= f.submit %>
+<%= form_for @user, url: create_user_path, html: { multipart: true} do |f| %>
+  <%= f.text_field :username, class:"form-control", placeholder:"Username"%>
+  <br>
+  <%= f.password_field :password, type:"password", class:"form-control", placeholder:"Password" %>
+  <br>
+  <%= f.email_field :email, class:"form-control", type:"email", placeholder:"Email"%>
+  <br>
+  <%= f.text_field :first, class:"form-control", placeholder:"First Name" %>
+  <br>
+  <%= f.text_field :last, class:"form-control", placeholder:"Last Name" %>
+  <br>
+  <%= f.number_field :age, class:"form-control", placeholder:"Age" %>
+  <br>
+  <%= f.label :avatar, "Profile Picture" %>
+  <%= f.file_field :avatar, class:"form-control", type:"file", id:"exampleInputFile", placeholder:"Profile Picture" %>
+  <br>
+  <%= f.submit class:'btn btn-default' %>
 <% end %>
