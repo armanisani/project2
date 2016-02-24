@@ -7,24 +7,24 @@
         <div class="useravatar">
             <img alt="" src= <%=@user.avatar %>r>
         </div>
-        <div class="card-info"> <span class="card-title"><%=@user.first%> <%=@user.last%></span>
+        <div class="card-info"> <span class="card-title"><%=@user.username%></span>
 
         </div>
     </div>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                <div class="hidden-xs">Artwork</div>
+                <div class="hidden-xs">cArtwork</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                <div class="hidden-xs">Followers</div>
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">followers/following</div>
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Following</div>
+            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                <div class="hidden-xs">user info</div>
             </button>
         </div>
     </div>
@@ -39,14 +39,27 @@
           <h5>Style: <%=a.style %></h5>
           <h5>Price: $<%=a.price  %></h5>
           <h5>Details: <%=a.details  %></h5>
+          <% if current_user == a.user %>
+          <%= link_to "edit piece", edit_art_path(a), class: "btn btn-success btn-lg", style: "margin-bottom: 5px;color: black;font-weight: bold;"%>
+          <%= link_to "delete piece", destroy_art_path, class: "btn btn-danger btn-lg", style: "color: black;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+          <% end %>
+
           </div>
           <% end %>
         </div>
         <div class="tab-pane fade in" id="tab2">
           <h3>This is tab 2</h3>
         </div>
-        <div class="tab-pane fade in" id="tab3">
-          <h3>This is tab 3</h3>
+        <div style="border: 2px solid black;width: 35%;margin: 50px auto; text-align:center;"class="tab-pane fade in" id="tab3">
+          <h4>name: <%= @user.first %> <%= @user.last  %></h4>
+          <h4>age: <%= @user.age %></h4>
+          <h4>email: <%= @user.email %></h4>
+          <h4>art created: <%= @user.arts.count %></h4>
+          <h4>art collected: 0</h4>
+          <h4>art bought: 0</h4>
+          <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-success btn-lg", style: "color: black;font-weight: bold;"%>
+          <%= link_to "delete profile", destroy_user_path, class: "btn btn-danger btn-lg", style: "color: black;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
+
         </div>
       </div>
     </div>

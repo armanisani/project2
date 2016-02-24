@@ -12,15 +12,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to users_path
+    end
+
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params.require(:user).permit(:username))
-      redirect_to index_path
-    else
-      render :edit
-    end
+      if @user.update_attributes(user_params)
+        redirect_to show_user_path(current_user)
+      else
+        render :edit
+      end
   end
 
   def new
@@ -43,10 +47,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @user = User.find(params[:id])
-  @user.destroy
-  redirect_to user_path
+    if current_user != @user
+      redirect_to show_user_path(current_user)
+    else
+      redirect_to logout_path
+      @user.destroy
+    end
   end
 private
   def user_params

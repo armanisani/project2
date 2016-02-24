@@ -16,7 +16,7 @@ class ArtsController < ApplicationController
 
   def update
     @art = Art.find(params[:id])
-    if @art.update_attributes(params.require(:art).permit(:artname))
+    if @art.update_attributes(art_params)
       redirect_to art_index_path
     else
       render :edit
@@ -34,10 +34,14 @@ class ArtsController < ApplicationController
     @art = Art.new
   end
 
-  def destroy
+  def delete
     @art = Art.find(params[:id])
-    @art.destroy
-    redirect_to art_path
+    if current_user != @art.user
+      redirect_to art_index_path
+    else
+      @art.destroy
+      redirect_to art_path
+    end
   end
   private
   def art_params

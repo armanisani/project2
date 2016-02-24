@@ -6,7 +6,6 @@ class Art < ActiveRecord::Base
   validates :price, presence: true
   validates :details, presence: true
   validates :avatar, presence: true
-  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50>" }, default_url: "https://filmshotfreezer.files.wordpress.com/2011/07/untitled-1.jpg"
  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

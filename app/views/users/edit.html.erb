@@ -1,2 +1,15 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+<h1>edit</h1>
+<div style="width:50%; margin: 0 auto;">
+<%= form_for @user, url: edit_user_path, html: { multipart: true} do |f| %>
+  <h5>First Name</h5>
+<%= f.text_field :first, class:"form-control", placeholder:"First Name"%>
+  <h5>Last Name</h5>
+<%= f.text_field :last, class:"form-control", placeholder:"Last Name" %>
+  <h5>Email</h5>
+<%= f.text_field :email, class:"form-control", placeholder:"First Name" %>
+<%= f.label :avatar, "Profile Picture" %>
+<%= f.file_field :avatar, class:"form-control", type:"file", id:"exampleInputFile", placeholder:"Profile Picture" %>
+<br>
+<%= f.submit class:'btn btn-default' %>
+<% end %>
+</div>
