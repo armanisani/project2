@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   patch "arts/:id/edit" => "arts#update"
   get "arts/:id/edit" => "arts#edit", as: :edit_art
   get "arts/:id" => "arts#show"
-  delete "arts/:id/" => "arts#delete",as: :destroy_art
+  delete "arts/:id" => "arts#delete",as: :destroy_art
   #sessions
   get '/logout' => 'sessions#destroy',as: :logout
   resources :sessions, only: [:new, :create]

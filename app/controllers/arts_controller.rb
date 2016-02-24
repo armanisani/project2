@@ -40,7 +40,7 @@ class ArtsController < ApplicationController
       redirect_to art_index_path
     else
       @art.destroy
-      redirect_to art_path
+      redirect_to art_index_path
     end
   end
   private
