@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   #homes routes
   root 'homes#index'
   get '/show' => 'homes#show'
@@ -19,7 +23,7 @@ Rails.application.routes.draw do
   post "arts" => "arts#create", as: :create_art
   patch "arts/:id/edit" => "arts#update"
   get "arts/:id/edit" => "arts#edit", as: :edit_art
-  get "arts/:id" => "arts#show"
+  get "arts/:id" => "arts#show", as: :show_art
   delete "arts/:id" => "arts#delete",as: :destroy_art
   #sessions
   get '/logout' => 'sessions#destroy',as: :logout

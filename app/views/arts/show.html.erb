@@ -1,2 +1,6 @@
-<h1>Arts#show</h1>
-<p>Find me in app/views/arts/show.html.erb</p>
+<h1 style="background: rgb(255, 236, 110); opacity: 0.8;text-decoration: underline"> <%= @art.name%></h1>
+<h2 style="text-align: center;">By: <%= @art.user.username %></h2>
+<p style="text-align: center;"> <%= image_tag @art.avatar.url(:large) %></p>
+<p style="text-align: center;">Style: <%= @art.style %></p>
+<p style="text-align: center;">Cost: <%= @art.price %></p>
+<p style="text-align: center;">Details: <%= @art.details%></p>
