@@ -13,7 +13,11 @@
 </head>
 <body>
   <nav style="text-align:center;"class="navbar navbar-inverse">
+    <% if !logged_in? %>
     <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/" role="button">home</a>
+    <% else %>
+    <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/" role="button">cartfeed</a>
+    <% end %>
     <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/users" role="button">artists & collectors</a>
     <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/arts" role="button">artwork</a>
   <% if logged_in? %>
