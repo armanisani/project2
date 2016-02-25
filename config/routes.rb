@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   root 'homes#index'
   get '/show' => 'homes#show'
 
+  #likes routes
+  get '/like' => 'likes#create'
+  get '/unlike' => 'likes#destroy'
+
   #users routes
   get 'users' => 'users#index', as: :users
   get 'users/new' => 'users#new', as: :new_user

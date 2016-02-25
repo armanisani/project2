@@ -12,20 +12,20 @@
 <body>
   <nav style="text-align:center;"class="navbar navbar-inverse">
     <% if !logged_in? %>
-    <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/" role="button">home</a>
+    <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="/" role="button">home</a>
     <% else %>
-    <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/" role="button">cartfeed</a>
+    <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="/" role="button">cartfeed</a>
     <% end %>
-    <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/users" role="button">artists & collectors</a>
-    <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/arts" role="button">artwork</a>
+    <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="/users" role="button">artists & collectors</a>
+    <a style="color: black;font-weight: bold;"class="btn btn-primary  btn-lg" href="/arts" role="button">artwork</a>
   <% if logged_in? %>
-  <%= link_to "Profile", show_user_path(current_user), class: "btn btn-warning btn-lg", style: "color: black;font-weight: bold;"%>
+  <%= link_to "Profile", show_user_path(current_user), class: "btn btn-primary btn-lg", style: "color: black;font-weight: bold;"%>
   <% end %>
-  <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="#" role="button">cart(coming soon)</a>
+  <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="#" role="button">cart(coming soon)</a>
   <% if logged_in? %>
-  <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/logout" role="button">logout</a>
+  <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="/logout" role="button">logout</a>
   <% else %>
-  <a style="color: black;font-weight: bold;"class="btn btn-warning btn-lg" href="/sessions/new" role="button">login</a>
+  <a style="color: black;font-weight: bold;"class="btn btn-primary btn-lg" href="/sessions/new" role="button">login</a>
   <% end %>
   </nav>
   <div style="text-align: center;"class="">

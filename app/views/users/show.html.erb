@@ -34,32 +34,68 @@
         <div class="tab-pane fade in active" id="tab1">
           <p style="text-align: center;"class="lead"><a class="btn btn-success btn-lg" href="/arts/new" role="button">post art</a></p>
           <% @user.arts.each do |a| %>
-          <div style="border:2px solid black; background: white;text-align: center;display: inline-block; margin: 10px 3%; width: 304px;">
+          <div style="border-radius: 5%; border:2px solid black; background: white;display: inline-block; margin: 10px 3%; width: 304px;">
           <h3> <%=a.name  %></h3>
           <h3> <%= image_tag a.avatar.url(:medium) %></h3>
+          <div style="background: rgb(226, 226, 226)">
           <h5>Style: <%=a.style %></h5>
           <h5>Price: $<%=a.price  %></h5>
           <h5>Details: <%=a.details  %></h5>
+          <h5>Likes: <%= a.likes.count %></h5>
+          </div>
+          <div style="text-align:center">
           <% if current_user == a.user %>
-          <%= link_to "edit piece", edit_art_path(a), class: "btn btn-success btn-lg", style: "margin-bottom: 5px;color: black;font-weight: bold;"%>
-          <%= link_to "delete piece", destroy_art_path(a), class: "btn btn-danger btn-lg", style: "color: black;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
-          <% end %>
+          <%= link_to "edit piece", edit_art_path(a), class: "btn btn-success btn-sm", style: "margin-bottom: 5px;color: black;font-weight: bold;"%>
+          <%= link_to "delete piece", destroy_art_path(a), class: "btn btn-danger btn-sm", style: "color: black;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
 
+          <% end %>
+         </div>
           </div>
           <% end %>
+          <% @likes.each do |a| %>
+          <% if a.user.id == @user.id%>
+          <div style="border-radius: 5%;border:2px solid black; background: white;text-align: center;display: inline-block; margin: 10px 3%; width: 304px;">
+          
+            <h3> <%= a.art.name %></h3>
+            <h3> <%= image_tag a.art.avatar.url(:medium) %></h3>
+            <div>by: <%=link_to a.art.user.username, show_user_path(a.art.user) %></div>
+            <div>Price: $<%=a.art.price  %></div>
+            <div>Details: <%=a.art.details  %></div>
+            <div>Likes: <%= a.art.likes.count %></div>
+            <div style="margin-bottom: 5px;">
+
+              <% if logged_in? %>
+                <% if current_user.id == a.art.user.id %>
+                    <a href="<%= edit_art_path(a.art.id) %>" class="btn-sm btn-primary">Edit</a>
+                <% else %>
+                    <% if current_user.already_likes?(a.art) %>
+                        <%= link_to 'Unlike', {controller: 'likes', action: 'destroy', id: a.art.id}, class: 'btn-sm btn-warning' %>
+                    <% else %>
+                        <%= link_to 'Like', {controller: 'likes', action: 'create', id: a.art.id}, class: 'btn-sm btn-success' %>
+                    <% end %>
+                <% end %>
+              <% end %>
+            </div>
+            </div>
+
+            <% end %>
+            <% end %>
+
         </div>
         <div class="tab-pane fade in" id="tab2">
           <h3>This is tab 2</h3>
         </div>
-        <div style="border: 2px solid black;width: 35%;margin: 50px auto; text-align:center;"class="tab-pane fade in" id="tab3">
+        <div style="border-radius: 5%;border: 2px solid black;width: 35%;margin: 50px auto; text-align:center;"class="tab-pane fade in" id="tab3">
           <h4>name: <%= @user.first %> <%= @user.last  %></h4>
           <h4>age: <%= @user.age %></h4>
           <h4>email: <%= @user.email %></h4>
           <h4>art created: <%= @user.arts.count %></h4>
           <h4>art collected: 0</h4>
           <h4>art bought: 0</h4>
+          <h4>Likes: <%= @user.likes.count %> </h4>
           <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-success btn-lg", style: "color: black;font-weight: bold;"%>
           <%= link_to "delete profile", destroy_user_path, class: "btn btn-danger btn-lg", style: "color: black;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
+
 
         </div>
       </div>

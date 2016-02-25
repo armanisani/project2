@@ -22,13 +22,16 @@
   </section>
 <h1 style="background: rgba(71, 71, 71, 0.59); color: white;margin-top: 10px;">cartwork</h1>
 <% @arts.each do |u| %>
-<div style="border:2px solid black; background: white;text-align: center;display: inline-block; margin: 0 3%; width: 304px;">
-<h5> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></h5>
+<div style="border-radius:5%;border:2px solid black; background: white;display: inline-block; margin: 0 3%; width: 304px;">
+<div> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></div>
 <img><%= image_tag u.avatar.url(:medium) %></img>
-<h2><%= link_to u.name, show_art_path(u) %></h2>
-<p>Style: <%= u.style %></p>
-<p style=" width: 100px; margin: 0 auto">Cost: $<%= u.price %></p>
-<p style="">Details: <%= u.details %></p>
+<div style="font-size: 25px;"><%= link_to u.name, show_art_path(u) %></div>
+<div style="margin-bottom: 10px;">
+<div>Style: <%= u.style %></div>
+<div>Cost: $<%= u.price %></div>
+<div>Details: <%= u.details %></div>
+<div>Likes: <%= u.likes.count %></div>
+</div>
 </div>
 <% end %>
 
@@ -37,13 +40,30 @@
 <% if logged_in? %>
 <h1 style="background: rgba(71, 71, 71, 0.59); color: white;margin-top: 0;">cartfeed</h1>
 <% @arts.each do |u| %>
-<div style="border-radius: 5%;border:2px solid black; background: white;text-align: center;display: inline-block; margin: 0 3%; width: 304px;">
-<h5> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></h5>
-<p><%= image_tag u.avatar.url(:medium) %></p>
-<h2><%= link_to u.name, show_art_path(u) %></h2>
-<p>Style:<%= u.style %></p>
-<p style=" width: 100px; margin: 0 auto">Cost:$<%= u.price %></p>
-<p style="">Details:<%= u.details %></p>
+<div style="border-radius: 5%;border:2px solid black; background: white;display: inline-block; margin: 0 3%; width: 304px;">
+<div> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></div>
+<div><%= image_tag u.avatar.url(:medium) %></div>
+<div><%= link_to u.name, show_art_path(u) %></div>
+<div style="background:rgb(219, 219, 219);border: 2px dotted black;">
+<div>Style:<%= u.style %></div>
+<div>Cost:$<%= u.price %></div>
+<div>Details:<%= u.details %></div>
+<div>Likes: <%= u.likes.count %></div>
+</div>
+<div style="margin-bottom: 5px;text-align:center;">
+  <% if logged_in? %>
+  <% if current_user.id == u.user.id %>
+      <a href="<%= edit_art_path(u.id) %>" class="btn-sm btn-primary">Edit</a>
+  <% else %>
+      <% if current_user.already_likes?(u) %>
+          <%= link_to 'Unlike', {controller: 'likes', action: 'destroy', id: u.id}, class: 'btn-sm btn-default' %>
+      <% else %>
+          <%= link_to 'Like', {controller: 'likes', action: 'create', id: u.id}, class: 'btn-sm btn-success' %>
+      <% end %>
+  <% end %>
+<% end %>
+</div>
+
 </div>
 <% end %>
 <% end %>

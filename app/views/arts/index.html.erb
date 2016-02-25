@@ -3,12 +3,31 @@
 <p style="text-align: center;"class="lead"><a class="btn btn-success btn-lg" href="/arts/new" role="button">post art</a></p>
 <% end %>
 <% @arts.each do |u| %>
-<div style="border-radius: 5%;background: white;text-align: center; border: 2px solid black;display: inline-block; margin: 3px 3%; width: 304px;">
+<div style="border-radius: 5%;background: white; border: 2px solid black;display: inline-block; margin: 3px 3%; width: 304px;">
 <h5> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></h5>
 <p><%= image_tag u.avatar.url(:medium) %></p>
 <h5 style="font-weight: bold;"><%= link_to u.name, show_art_path(u) %></h5>
-<p>Style:<%= u.style %></p>
-<p>Cost:$<%= u.price %></p>
-<p>Details:<%= u.details %></p>
+<div style="background: rgb(219, 219, 219); border: 2px dotted black">
+  <div>Style:<%= u.style %></div>
+  <div>Cost:$<%= u.price %></div>
+  <div>Details:<%= u.details %></div>
+  <div>Likes: <%= u.likes.count %></div>
+</div>
+
+<div style="margin-bottom: 5px; text-align: center">
+  <% if logged_in? %>
+    <% if current_user.id == u.user.id %>
+        <a href="<%= edit_art_path(u.id) %>" class="btn-sm btn-primary">Edit</a>
+    <% else %>
+        <% if current_user.already_likes?(u) %>
+            <%= link_to 'Unlike', {controller: 'likes', action: 'destroy', id: u.id}, class: 'btn-sm btn-default' %>
+        <% else %>
+            <%= link_to 'Like', {controller: 'likes', action: 'create', id: u.id}, class: 'btn-sm btn-success' %>
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+
+
 </div>
 <% end %>

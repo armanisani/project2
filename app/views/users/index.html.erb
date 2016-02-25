@@ -1,12 +1,15 @@
 <h1 style="background: rgb(255, 236, 110); opacity: 0.8">artists & collectors</h1>
 
 <% @users.each do |u| %>
-<div style="text-align: center;display: inline-block; margin: 3px 3%; width: 305px;background: rgb(254, 255, 219);border: 2px solid rgb(255, 230, 0); border-radius: 5%;">
+<div style="display: inline-block; margin: 3px 3%; width: 305px;background: white;  border: 2px solid black; border-radius: 5%;">
 <h4>username: <%=  link_to u.username, show_user_path(u) %></h4>
-<p><%= image_tag u.avatar.url(:medium) %></p>
-<p>Name: <%= u.first %> <%= u.last %></p>
-<p>Age: <%= u.age %></p>
-<p>Art Created: <%= u.arts.count %></p>
-<p>Art Collected: 0</p>
+<div><%= image_tag u.avatar.url(:medium) %></div>
+<div style="margin: 5px; backround:rgb(226, 226, 226);">
+<div>Name: <%= u.first %> <%= u.last %></div>
+<div>Age: <%= u.age %></div>
+<div>Art Created: <%= u.arts.count %></div>
+<div>Art Collected: 0</div>
+<div>Likes: <%= u.likes.count %></div>
+</div>
 </div>
 <% end %>

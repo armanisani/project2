@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :arts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :username, presence: true
   validates :username, uniqueness: true
@@ -10,7 +11,9 @@ class User < ActiveRecord::Base
   validates :age, presence: true
   # validates :password, presence: true
 
-
+  def already_likes?(art)
+      self.likes.where("art_id = #{art.id}").count > 0
+    end
 
 
   has_attached_file :avatar, :styles => { :large => "500x500", :medium => "300x300>", :thumb => "50x50>" }, default_url: "https://account.socialbakers.com/default_user.png"
