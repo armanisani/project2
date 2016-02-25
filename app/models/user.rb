@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :arts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  acts_as_followable
-  acts_as_follower
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :email,uniqueness: true, presence: true

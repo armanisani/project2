@@ -32,19 +32,6 @@ ActiveRecord::Schema.define(version: 20160225181749) do
 
   add_index "arts", ["user_id"], name: "index_arts_on_user_id", using: :btree
 
-  create_table "follows", force: :cascade do |t|
-    t.integer  "followable_id",                   null: false
-    t.string   "followable_type",                 null: false
-    t.integer  "follower_id",                     null: false
-    t.string   "follower_type",                   null: false
-    t.boolean  "blocked",         default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
-
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
