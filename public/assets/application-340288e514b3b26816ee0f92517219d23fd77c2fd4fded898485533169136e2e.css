@@ -1,0 +1,212 @@
+/* line 5, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.video-section .pattern-overlay {
+  background-color: rgba(71, 71, 71, 0.59);
+  padding: 110px 0 32px;
+  min-height: 496px;
+  /* Incase of overlay problems just increase the min-height*/
+}
+
+/* line 11, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.video-section h1, .video-section h3 {
+  text-align: center;
+  color: #fff;
+}
+
+/* line 15, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.video-section h1 {
+  font-size: 110px;
+  margin: 40px auto 0px;
+  -webkit-text-shadow: 1px 1px 1px #000;
+  -moz-text-shadow: 1px 1px 1px #000;
+}
+
+/* line 21, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.video-section h3 {
+  font-size: 25px;
+  margin: 0px auto 15px;
+}
+
+/* line 25, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.video-section .buttonBar {
+  display: none;
+}
+
+/* line 26, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/homes.scss */
+.player {
+  font-size: 1px;
+}
+/* line 4, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+h1 {
+  text-align: center;
+}
+
+/* line 7, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card {
+  margin-top: 20px;
+  padding: 30px;
+  width: 100%;
+  background-color: rgba(214, 224, 226, 0.2);
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 22, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard {
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff;
+  background-color: white;
+}
+
+/* line 30, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .card-background {
+  height: 130px;
+}
+
+/* line 33, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card-background img {
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  filter: blur(25px);
+  margin-left: -100px;
+  margin-top: -200px;
+  min-width: 130%;
+}
+
+/* line 43, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .useravatar {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+}
+
+/* line 49, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .useravatar img {
+  width: 100px;
+  height: 100px;
+  max-width: 100%;
+  max-height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+/* line 59, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .card-info {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+}
+
+/* line 65, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .card-info .card-title {
+  padding: 0 5px;
+  font-size: 20px;
+  line-height: 1;
+  color: #262626;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 75, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .card-info {
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 20px;
+  color: #737373;
+  text-overflow: ellipsis;
+}
+
+/* line 82, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.card.hovercard .bottom {
+  padding: 0 20px;
+  margin-bottom: 17px;
+}
+
+/* line 86, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+.btn-pref .btn {
+  -webkit-border-radius: 0 !important;
+}
+
+/* line 90, /Users/armansani/WDI/project2/cart/app/assets/stylesheets/users.scss */
+body {
+  background: whitesmoke;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+ .gravatar {
+   float: left;
+   margin-right: 10px;
+ }
+
+ .gravatar_edit {
+   margin-top: 15px;
+ }
+
+ .stats {
+   overflow: auto;
+   margin-top: 0;
+   padding: 0;
+   a {
+     float: left;
+     padding: 0 10px;
+     border-left: 1px solid $gray-lighter;
+     color: gray;
+     &:first-child {
+       padding-left: 0;
+       border: 0;
+     }
+     &:hover {
+       text-decoration: none;
+       color: blue;
+     }
+   }
+   strong {
+     display: block;
+   }
+ }
+
+ .user_avatars {
+   overflow: auto;
+   margin-top: 10px;
+   .gravatar {
+     margin: 1px 1px;
+   }
+   a {
+     padding: 0;
+   }
+ }
+
+ .users.follow {
+   padding: 0;
+ }
