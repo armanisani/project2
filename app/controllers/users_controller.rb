@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:show]
+  before_action :authorize, only: [:show, :following, :followers]
 
 
   def index
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @likes = Like.all
+    @relations = Relationship.all
   end
 
   def edit
@@ -57,6 +58,17 @@ class UsersController < ApplicationController
       @user.destroy
     end
   end
+  def following
+  @title = "Following"
+  @user  = User.find(params[:id])
+  render 'show_follow'
+end
+
+def followers
+  @title = "Followers"
+  @user  = User.find(params[:id])
+  render 'show_follow'
+end
 private
   def user_params
     params.require(:user).permit(:username,:first,:last,:age, :email, :password, :avatar)

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/unlike' => 'likes#destroy'
 
   #users routes
+  get 'users/:id/following' => 'users#following',as: :following_user
+  get 'users/:id/followers' => 'users#followers',as: :followers_user
   get 'users' => 'users#index', as: :users
   get 'users/new' => 'users#new', as: :new_user
   post 'users' => 'users#create', as: :create_user
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
   patch 'users/:id/edit' => 'users#update'
   get 'users/:id' => 'users#show', as: :show_user
   get 'users/:id/edit' => 'users#edit', as: :edit_user
-  # resources :users
   #arts
   get 'arts' => 'arts#index', as: :art_index
   get "arts/new" => "arts#new"
@@ -32,4 +33,5 @@ Rails.application.routes.draw do
   #sessions
   get '/logout' => 'sessions#destroy',as: :logout
   resources :sessions, only: [:new, :create]
+  resources :relationships,  only: [:create, :destroy]
 end
