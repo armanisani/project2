@@ -1,0 +1,21 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/flashes_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Flashes Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  redirect_to new_session_path
+<% end %>
