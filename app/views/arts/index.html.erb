@@ -12,6 +12,7 @@
   <div>Cost:$<%= u.price %></div>
   <div>Details:<%= u.details %></div>
   <div>Likes: <%= u.likes.count %></div>
+  <div>Posted <%= time_ago_in_words(u.created_at)%> ago</div>
 </div>
 
 <div style="margin-bottom: 5px; text-align: center">

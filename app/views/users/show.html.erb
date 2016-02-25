@@ -42,6 +42,8 @@
           <h5>Price: $<%=a.price  %></h5>
           <h5>Details: <%=a.details  %></h5>
           <h5>Likes: <%= a.likes.count %></h5>
+          <div>Posted <%= time_ago_in_words(a.created_at)%> ago</div>
+
           </div>
           <div style="text-align:center">
           <% if current_user == a.user %>
@@ -62,6 +64,7 @@
             <div>Price: $<%=a.art.price  %></div>
             <div>Details: <%=a.art.details  %></div>
             <div>Likes: <%= a.art.likes.count %></div>
+            <div>Liked <%= time_ago_in_words(a.created_at)%> ago</div>
             <div style="margin-bottom: 5px;">
 
               <% if logged_in? %>
@@ -84,8 +87,8 @@
         </div>
         <div class="tab-pane fade in" id="tab2">
           <div class="">
-            <h1 style="text-align:centerx"><% provide(:title, @user.first) %></h1>
-            <div style="text-align: center;width:300px;height: 125px; margin:0 auto; border: 2px solid #2e6da4;border-radius: 5%;background:#c2d6e7">
+            <h1 style=""><% provide(:title, @user.first) %></h1>
+            <div style="width:300px;height: 125px; margin:0 auto; border: 2px solid #2e6da4;border-radius: 5%;background:#c2d6e7">
               <aside class="col-md-4">
                 <section>
                   <h1>
@@ -101,6 +104,38 @@
               </div>
             </div>
           </div>
+          <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">following</h1>
+          <% @relations.each do |r| %>
+          <% if r.follower.id == @user.id %>
+            <div style="border-radius: 5%;border:2px solid black;text-align:center; background: white;display: inline-block; margin: 0 1%; width: 304px;">
+            <h1><%= link_to r.followed.username, show_user_path(r.followed) %></h1>
+            <div><%= image_tag r.followed.avatar.url(:medium) %></div>
+            <div>Name:<%= r.followed.first %> <%= r.followed.last %></div>
+            <div>Art Pieces: <%= r.followed.arts.count %></div>
+            <div>Joined <%= time_ago_in_words(r.followed.created_at)%> ago</div>
+
+          </div>
+              <% end %>
+              <% end %>
+              <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">followers</h1>
+              <% @relations.each do |r| %>
+              <% if r.followed.id == @user.id %>
+                <div style="border-radius: 5%;border:2px solid black;text-align:center; background: white;display: inline-block; margin: 0 1%; width: 304px;">
+                <h1><%= link_to r.follower.username, show_user_path(r.follower) %></h1>
+                <div><%= image_tag r.follower.avatar.url(:medium) %></div>
+                <div>Name:<%= r.follower.first %> <%= r.follower.last %></div>
+                <div>Art Pieces: <%= r.follower.arts.count %></div>
+                <div>Joined <%= time_ago_in_words(r.follower.created_at)%> ago</div>
+
+              </div>
+                  <% end %>
+                  <% end %>
+          <div>
+
+          </div>
+
+                <!-- this used to have pics under stats -->
+            </aside>
         </div>
         <div style="border-radius: 5%;border: 2px solid #2e6da4;width: 35%;margin: 50px auto; text-align:center;background:#c2d6e7"class="tab-pane fade in" id="tab3">
           <h4>name: <%= @user.first %> <%= @user.last  %></h4>
@@ -110,6 +145,8 @@
           <h4>art collected: 0</h4>
           <h4>art bought: 0</h4>
           <h4>Likes: <%= @user.likes.count %> </h4>
+          <h4>Joined <%= time_ago_in_words(@user.created_at)%> ago</h4>
+
           <%= link_to "edit profile", edit_user_path(current_user), class: "btn btn-success btn-sm", style: "color: white;font-weight: bold;"%>
           <%= link_to "delete profile", destroy_user_path, class: "btn btn-danger btn-sm", style: "color: white;font-weight: bold;", method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
 

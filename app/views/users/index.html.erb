@@ -10,6 +10,8 @@
 <div>Art Created: <%= u.arts.count %></div>
 <div>Art Collected: 0</div>
 <div>Likes: <%= u.likes.count %></div>
+<div>User joined <%= time_ago_in_words(u.created_at)%> ago</div>
+
 </div>
 </div>
 <% end %>

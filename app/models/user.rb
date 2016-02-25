@@ -39,6 +39,13 @@ class User < ActiveRecord::Base
       self.likes.where("art_id = #{art.id}").count > 0
     end
 
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Art.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
 
   has_attached_file :avatar, :styles => { :large => "500x500", :medium => "300x300>", :thumb => "50x50>" }, default_url: "https://account.socialbakers.com/default_user.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

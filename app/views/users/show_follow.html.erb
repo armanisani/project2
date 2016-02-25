@@ -1,0 +1,36 @@
+<% provide(:title, @title) %>
+<% @relations = Relationship.all %>
+  <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">followers</h1>
+  <% @relations.each do |r| %>
+  <% if r.followed.id == current_user.id %>
+    <div style="border-radius: 5%;border:2px solid black;text-align:center; background: white;display: inline-block; margin: 0 1%; width: 304px;">
+    <h1><%= link_to r.followed.username, show_user_path(r.followed) %></h1>
+    <div><%= image_tag r.followed.avatar.url(:medium) %></div>
+    <div>Name:<%= r.followed.first %> <%= r.followed.last %></div>
+    <div>Art Pieces: <%= r.followed.arts.count %></div>
+    <div>Joined <%= time_ago_in_words(r.followed.created_at)%> ago</div>
+
+          <section class="stats">
+            <%= render 'shared/stats' %>
+          </section>
+        <div style="margin: 0 auto"class="col-md-8">
+          <%= render 'follow_form' if logged_in? %>
+        </div>
+
+  </div>
+      <% end %>
+      <% end %>
+      <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">following</h1>
+      <% @relations.each do |r| %>
+      <% if r.follower.id == current_user.id %>
+        <div style="border-radius: 5%;border:2px solid black;text-align:center; background: white;display: inline-block; margin: 0 1%; width: 304px;">
+        <h1><%= link_to r.followed.username, show_user_path(r.followed) %></h1>
+        <div><%= image_tag r.followed.avatar.url(:medium) %></div>
+        <div>Name:<%= r.followed.first %> <%= r.followed.last %></div>
+        <div>Art Pieces: <%= r.followed.arts.count %></div>
+        <div>Joined <%= time_ago_in_words(r.followed.created_at)%> ago</div>
+
+      </div>
+          <% end %>
+          <% end %>
+</div>

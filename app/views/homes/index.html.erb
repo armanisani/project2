@@ -38,7 +38,41 @@
 
 <% end %>
 <% if logged_in? %>
-<h1 style="background: #2e6da4;color:black; opacity: 0.8 margin-top: 0;">cartfeed</h1>
+<h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">yourfeed</h1>
+<div>
+<% @relations.each do |r| %>
+<% if r.follower.id == current_user.id %>
+  <% r.followed.arts.each do |a| %>
+  <div style="border-radius: 5%;border:2px solid black; background: white;display: inline-block; margin: 0 1%; width: 304px;">
+  <div> <%= image_tag r.followed.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to r.followed.username, show_user_path(r.followed), style: "margin-right: 20%; font-size: 20px"%></div>
+  <div><%= image_tag a.avatar.url(:medium) %></div>
+  <div><%= link_to a.name, show_art_path(a) %></div>
+  <div style="background:rgb(219, 219, 219);border: 2px dotted black;">
+  <div>Style:<%= a.style %></div>
+  <div>Cost:$<%= a.price %></div>
+  <div>Details:<%= a.details %></div>
+  <div>Likes: <%= a.likes.count %></div>
+  <div>Posted <%= time_ago_in_words(a.created_at)%> ago</div>
+  </div>
+  <div style="margin-bottom: 5px;text-align:center;">
+    <% if logged_in? %>
+    <% if current_user.id == r.followed.id %>
+        <a href="<%= edit_art_path(u.id) %>" class="btn-sm btn-primary">Edit</a>
+    <% else %>
+        <% if current_user.already_likes?(a) %>
+            <%= link_to 'Unlike', {controller: 'likes', action: 'destroy', id: a.id}, class: 'btn-sm btn-default' %>
+        <% else %>
+            <%= link_to 'Like', {controller: 'likes', action: 'create', id: a.id}, class: 'btn-sm btn-success' %>
+        <% end %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+    <% end %>
+    <% end %>
+    <% end %>
+<h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">cartfeed</h1>
+
 <% @arts.each do |u| %>
 <div style="border-radius: 5%;border:2px solid black; background: white;display: inline-block; margin: 0 1%; width: 304px;">
 <div> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></div>
@@ -49,6 +83,8 @@
 <div>Cost:$<%= u.price %></div>
 <div>Details:<%= u.details %></div>
 <div>Likes: <%= u.likes.count %></div>
+<div>Posted <%= time_ago_in_words(u.created_at)%> ago</div>
+
 </div>
 <div style="margin-bottom: 5px;text-align:center;">
   <% if logged_in? %>
