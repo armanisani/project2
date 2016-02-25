@@ -1,7 +1,8 @@
-<h1 style="background: rgb(255, 236, 110); opacity: 0.8;text-decoration: underline"> <%= @art.name%></h1>
+<h1 style="background: #2e6da4;color:black; opacity: 0.8;text-decoration: underline; margin-top: 0;"> <%= @art.name%></h1>
 <h2 style="text-align: center;">By: <%= @art.user.username %></h2>
-<p style="text-align: center;"> <%= image_tag @art.avatar.url(:large) %></p>
-<p style="text-align: center;">Style: <%= @art.style %></p>
-<p style="text-align: center;">Cost: <%= @art.price %></p>
-<p style="text-align: center;">Details: <%= @art.details%></p>
-<p style="text-align: center;">Likes: <%= @art.likes.count %></p>
+<div style="text-align: center;"> <%= image_tag @art.avatar.url(:large) %></div>
+<div style="text-align: center;">Style: <%= @art.style %></div>
+<div style="text-align: center;">Cost: <%= @art.price %></div>
+<div style="text-align: center;">Details: <%= @art.details%></div>
+<div style="text-align: center;">Likes: <%= @art.likes.count %></div>
+<div style="margin: 0 auto;width:40px; text-decoration: none; color:black;"><%= link_to "Back", :back%></div>

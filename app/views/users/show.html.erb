@@ -35,7 +35,7 @@
           <p style="text-align: center;"class="lead"><a class="btn btn-success btn-lg" href="/arts/new" role="button">post art</a></p>
           <% @user.arts.each do |a| %>
           <div style="border-radius: 5%; border:2px solid black; background: white;display: inline-block; margin: 10px 1%; width: 304px;">
-          <h3> <%=a.name  %></h3>
+          <h3 style="text-align:center"> <%= link_to a.name, show_art_path(a)  %></h3>
           <h3> <%= image_tag a.avatar.url(:medium) %></h3>
           <div style="background: rgb(226, 226, 226)">
           <h5>Style: <%=a.style %></h5>
@@ -56,7 +56,7 @@
           <% if a.user.id == @user.id%>
           <div style="border-radius: 5%;border:2px solid black; background: white;text-align: center;display: inline-block; margin: 10px 1%; width: 304px;">
 
-            <h3> <%= a.art.name %></h3>
+            <h3> <%= link_to a.art.name, show_art_path(a.art) %></h3>
             <h3> <%= image_tag a.art.avatar.url(:medium) %></h3>
             <div>by: <%=link_to a.art.user.username, show_user_path(a.art.user) %></div>
             <div>Price: $<%=a.art.price  %></div>
