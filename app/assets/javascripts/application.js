@@ -17,8 +17,7 @@
 
 var pageInit = function() {
 
-  $(".player").mb_YTPlayer();
-  tab1 = $('#favorites')
+
 
   $(".btn-pref .btn ").click(function () {
       $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
