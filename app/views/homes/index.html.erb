@@ -40,9 +40,9 @@
 <% if logged_in? %>
 <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">yourfeed</h1>
 <div>
-<% @relations.each do |r| %>
+<% @relations.reverse.each do |r| %>
 <% if r.follower.id == current_user.id %>
-  <% r.followed.arts.each do |a| %>
+  <% r.followed.arts.reverse.each do |a| %>
   <div style="border-radius: 5%;border:2px solid black; background: white;display: inline-block; margin: 0 1%; width: 304px;">
   <div> <%= image_tag r.followed.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to r.followed.username, show_user_path(r.followed), style: "margin-right: 20%; font-size: 20px"%></div>
   <div><%= image_tag a.avatar.url(:medium) %></div>
@@ -73,7 +73,7 @@
     <% end %>
 <h1 style="background: #2e6da4;color:black;opacity: 0.8; margin-top: 0;">cartfeed</h1>
 
-<% @arts.each do |u| %>
+<% @arts.reverse.each do |u| %>
 <div style="border-radius: 5%;border:2px solid black; background: white;display: inline-block; margin: 0 1%; width: 304px;">
 <div> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></div>
 <div><%= image_tag u.avatar.url(:medium) %></div>
