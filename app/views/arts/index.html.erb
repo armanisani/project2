@@ -5,7 +5,7 @@
 <% @arts.each do |u| %>
 <div style="border-radius: 5%;background: white; border: 2px solid black;display: inline-block; margin: 3px 1%; width: 304px;">
 <h5> <%= image_tag u.user.avatar.url(:thumb), style: "border-radius: 50%; float: left; margin: 0 5px 5px;" %><%= link_to u.user.username, show_user_path(u.user), style: "margin-right: 20%; font-size: 20px"%></h5>
-<p><%= image_tag u.avatar.url(:medium) %></p>
+<p><div class="img-thumb"><%= image_tag u.avatar.url(:medium) %></div></p>
 <h5 style="font-weight: bold;"><%= link_to u.name, show_art_path(u) %></h5>
 <div>
   <div>Style:<%= u.style %></div>

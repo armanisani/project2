@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+
+
 var pageInit = function() {
 
 

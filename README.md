@@ -4,6 +4,25 @@ Buy unique artwork from artists across the globe! This website is designed to gi
 
 
 
-VERSION 1
+Future Implementations
 =====
-Everything is opperational except the bid/buyout section which is under construction. The site needs more polishing and user friendliness.
+* Bid/buyout
+* Shopping cart
+* Popup images/signup&signin
+* More polished
+* User messaging
+* More responsive navbar
+* Awards/trophies
+* More detailed art posts
+
+Technologies/Frameworks
+===
+* HTML5/CSS3
+* Javascript
+* Ruby on Rails
+* Jquery
+* Bootstrap
+
+Wireframe
+====
+
