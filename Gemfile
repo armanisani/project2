@@ -54,3 +54,4 @@ group :development do
   gem 'spring'
 end
 gem "acts_as_follower"
+gem "aws-sdk"
